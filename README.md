@@ -11,7 +11,7 @@ Data sources for table and collection views in a more reusable manner
 To install GenericDataSource with Carthage, add the following line to your `Cartfile`.
 
 ```ogdl
-github "DavidObfuscator/GenericDataSource"
+github "DavidObfuscator/GenericDataSource" "master"
 ```
 
 Run `carthage update` to build the framework and drag the built `GenericDataSource.framework` into your Xcode project.

@@ -12,9 +12,19 @@ public class CollectionViewDataSource<CellType: ModelBoundedCell & UICollectionV
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = data[indexPath.row]
+        let model = self[indexPath]
         let cell: CellType = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         cell.display(viewModel: model)
         return cell
+    }
+}
+
+extension CollectionViewDataSource {
+    subscript(index: Int) -> CellType.SupportedViewModel {
+        return data[index]
+    }
+
+    subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+        return data[indexPath.row]
     }
 }

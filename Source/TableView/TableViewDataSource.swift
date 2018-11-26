@@ -12,9 +12,19 @@ public class TableViewDataSource<CellType: ModelBoundedCell & UITableViewCell>: 
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = data[indexPath.row]
+        let model = self[indexPath]
         let cell: CellType = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.display(viewModel: model)
         return cell
+    }
+}
+
+extension TableViewDataSource {
+    subscript(index: Int) -> CellType.SupportedViewModel {
+        return data[index]
+    }
+
+    subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+        return data[indexPath.row]
     }
 }

@@ -1,9 +1,9 @@
 import UIKit
 
 public class CollectionViewDataSource<CellType: ModelBoundedCell & UICollectionViewCell>: NSObject, UICollectionViewDataSource {
-    private var data = [CellType.SupportedViewModel]()
+    private var data = [CellType.SupportedModel]()
 
-    public func setData(data: [CellType.SupportedViewModel]) {
+    public func setData(data: [CellType.SupportedModel]) {
         self.data = data
     }
 
@@ -14,17 +14,17 @@ public class CollectionViewDataSource<CellType: ModelBoundedCell & UICollectionV
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = self[indexPath]
         let cell: CellType = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.display(viewModel: model)
+        cell.configure(model: model)
         return cell
     }
 }
 
 extension CollectionViewDataSource {
-    public subscript(index: Int) -> CellType.SupportedViewModel {
+    public subscript(index: Int) -> CellType.SupportedModel {
         return data[index]
     }
 
-    public subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+    public subscript(indexPath: IndexPath) -> CellType.SupportedModel {
         return data[indexPath.row]
     }
 }

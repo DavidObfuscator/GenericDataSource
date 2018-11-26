@@ -1,9 +1,9 @@
 import UIKit
 
 public class TableViewDataSource<CellType: ModelBoundedCell & UITableViewCell>: NSObject, UITableViewDataSource {
-    private var data = [CellType.SupportedViewModel]()
+    private var data = [CellType.SupportedModel]()
 
-    public func setData(data: [CellType.SupportedViewModel]) {
+    public func setData(data: [CellType.SupportedModel]) {
         self.data = data
     }
 
@@ -14,17 +14,17 @@ public class TableViewDataSource<CellType: ModelBoundedCell & UITableViewCell>: 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self[indexPath]
         let cell: CellType = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.display(viewModel: model)
+        cell.configure(model: model)
         return cell
     }
 }
 
 extension TableViewDataSource {
-    public subscript(index: Int) -> CellType.SupportedViewModel {
+    public subscript(index: Int) -> CellType.SupportedModel {
         return data[index]
     }
 
-    public subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+    public subscript(indexPath: IndexPath) -> CellType.SupportedModel {
         return data[indexPath.row]
     }
 }

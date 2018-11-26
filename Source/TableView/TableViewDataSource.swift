@@ -20,11 +20,11 @@ public class TableViewDataSource<CellType: ModelBoundedCell & UITableViewCell>: 
 }
 
 extension TableViewDataSource {
-    subscript(index: Int) -> CellType.SupportedViewModel {
+    public subscript(index: Int) -> CellType.SupportedViewModel {
         return data[index]
     }
 
-    subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+    public subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
         return data[indexPath.row]
     }
 }

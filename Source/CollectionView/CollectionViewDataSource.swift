@@ -20,11 +20,11 @@ public class CollectionViewDataSource<CellType: ModelBoundedCell & UICollectionV
 }
 
 extension CollectionViewDataSource {
-    subscript(index: Int) -> CellType.SupportedViewModel {
+    public subscript(index: Int) -> CellType.SupportedViewModel {
         return data[index]
     }
 
-    subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
+    public subscript(indexPath: IndexPath) -> CellType.SupportedViewModel {
         return data[indexPath.row]
     }
 }

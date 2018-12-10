@@ -31,9 +31,9 @@ Create cell view:
 
 ```swift
 class PetTableViewCell: UITableViewCell, ModelBoundedCell {
-    typealias SupportedViewModel = PetViewModel
+    typealias SupportedModel = PetViewModel
 
-    func display(viewModel: PetViewModel) {
+    func configure(model: PetViewModel) {
         // configure cell with view model
     }
 }
